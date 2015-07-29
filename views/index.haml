@@ -1,6 +1,3 @@
-%audio#schlaang
-  %source{ src: "/audio/regards.mp3", type: "audio/mpeg" }
-
 .signature
   #regards
   #taang
@@ -13,28 +10,26 @@
     var $audio = $("#schlaang");
     var audio = $audio.get(0);
 
-    var firedRegards = false;
     var firedTaang = false;
 
-    $audio.on("timeupdate", function (event) {
-      if (!firedRegards && audio.currentTime >= 2) {
-        $("#taang").typed({
-          strings: [name + "."],
-          cursorChar: "",
-          typeSpeed: 25
-        });
-      }
-    });
+    playAudio(["/audio/regards.mp3", "/audio/regards.m4a"])
+      .on("timeupdate", function (event) {
+        if (!firedTaang && event.target.currentTime >= 2) {
+          $("#taang").typed({
+            strings: [name + "."],
+            cursorChar: "",
+            typeSpeed: 25
+          });
 
-    $audio.on("canplay", function (event) {
-      setTimeout(function () {
-        audio.play();
-
+          firedTaang = true;
+        }
+      })
+      .on("play", function (event) {
         $("#regards").typed({
           cursorChar: "",
           strings: ["Regards,"],
-          typeSpeed: 10,
+          typeSpeed: 10
         });
-      }, 1000);
-    });
+      })
+      .play();
   });
