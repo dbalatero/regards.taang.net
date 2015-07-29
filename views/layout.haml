@@ -2,13 +2,35 @@
   %head
     %title regards, taang
 
+    %script{ type: 'text/javascript', src: 'https://code.jquery.com/jquery-2.1.4.min.js' }
+    %script{ type: 'text/javascript', src: '/js/typed.min.js' }
+
+    %link{ href: 'http://fonts.googleapis.com/css?family=Petit+Formal+Script', rel: 'stylesheet', type: 'text/css' }
+
     :css
       body {
         background: transparent url(/images/parchment.jpg) no-repeat;
         background-size: cover;
+        font-family: 'Petit Formal Script', cursive;
+      }
+
+      .signature {
+        width: 100%;
+      }
+
+      .signature > div {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .signature #regards {
+        margin-top: 400px;
+        font-size: 7.5em;
+      }
+
+      .signature #taang {
+        font-size: 5em;
       }
 
   %body
-    %h1 regards, taang
-
     = yield

@@ -1,0 +1,25 @@
+.signature
+  #regards
+  #taang
+
+:javascript
+  $(function () {
+    var taangNames = ["Tang", "Taang", "Tandg", "Tong", "T'ang", "T'aang"];
+    var name = taangNames[Math.floor(Math.random() * taangNames.length)];
+
+    setTimeout(function () {
+      $("#regards").typed({
+        cursorChar: "",
+        strings: ["Regards,"],
+        typeSpeed: 10,
+        callback: function () {
+          $("#taang").typed({
+            strings: [name + "."],
+            cursorChar: "",
+            startDelay: 500,
+            typeSpeed: 25
+          });
+        }
+      });
+    }, 2500);
+  });
